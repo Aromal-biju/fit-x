@@ -339,7 +339,7 @@ export const WORKOUTS: Exercise[] = [
     ],
     sets: '3-4',
     reps: '15-20',
-    imageUrl: 'https://picsum.photos/600/400?random=9'
+    imageUrl: 'https://fitnessfaqs.com/wp-content/uploads/2023/12/Normal-Push-ups.gif'
   },
   {
     id: 'home_s1',
@@ -355,7 +355,7 @@ export const WORKOUTS: Exercise[] = [
     ],
     sets: '3',
     reps: '8-12',
-    imageUrl: 'https://picsum.photos/600/400?random=10'
+    imageUrl: 'https://hips.hearstapps.com/hmg-prod/images/workouts/2016/03/pikepushup-1456956895.gif?resize=640:*'
   },
   {
     id: 'home_l1',
@@ -371,7 +371,7 @@ export const WORKOUTS: Exercise[] = [
     ],
     sets: '4',
     reps: '20-25',
-    imageUrl: 'https://picsum.photos/600/400?random=11'
+    imageUrl: 'https://hips.hearstapps.com/hmg-prod/images/workouts/2016/03/bodyweightsquat-1457041691.gif'
   },
   {
     id: 'home_l2',
@@ -387,7 +387,7 @@ export const WORKOUTS: Exercise[] = [
     ],
     sets: '3',
     reps: '12 per leg',
-    imageUrl: 'https://picsum.photos/600/400?random=12'
+    imageUrl: 'https://cdn.jefit.com/assets/img/exercises/gifs/1222.gif'
   },
   {
     id: 'home_ab1',
@@ -403,7 +403,7 @@ export const WORKOUTS: Exercise[] = [
     ],
     sets: '3',
     reps: '60 sec',
-    imageUrl: 'https://picsum.photos/600/400?random=8'
+    imageUrl: 'https://gymnation.com/media/jpbjzofv/plank2.webp?width=956&height=675&v=1da85a0bb1f4060'
   },
   {
     id: 'home_ab2',
@@ -419,7 +419,7 @@ export const WORKOUTS: Exercise[] = [
     ],
     sets: '3',
     reps: '20 reps',
-    imageUrl: 'https://picsum.photos/600/400?random=13'
+    imageUrl: 'https://hips.hearstapps.com/hmg-prod/images/workouts/2016/08/bicycle-1472058017.gif?resize=980:'
   },
   {
     id: 'home_a1',
@@ -434,7 +434,7 @@ export const WORKOUTS: Exercise[] = [
     ],
     sets: '3',
     reps: '8-12',
-    imageUrl: 'https://picsum.photos/600/400?random=14'
+    imageUrl: 'https://images.ctfassets.net/6ilvqec50fal/3hTY3FIEwYdNloN5V3HL7G/26e28de169b01e5e79332e5418803470/Diamond_Push-Up_GIF.gif'
   },
   {
     id: 'home_b1',
@@ -450,7 +450,7 @@ export const WORKOUTS: Exercise[] = [
     ],
     sets: '3',
     reps: '12-15',
-    imageUrl: 'https://picsum.photos/600/400?random=16'
+    imageUrl: 'https://hips.hearstapps.com/hmg-prod/images/workouts/2016/08/supermany-1472154643.gif'
   }
 ];
 
