@@ -2,12 +2,14 @@ import React from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { ArrowRight, Activity, Utensils, Calculator } from 'lucide-react';
 
+const API_BASE: string = ((import.meta as any).env?.VITE_API_URL) || 'http://localhost:4000';
+
 const Home: React.FC = () => {
   const navigate = useNavigate();
 
   const handleStartTraining = () => {
-    const isLoggedIn = localStorage.getItem('isLoggedIn') === 'true';
-    if (isLoggedIn) {
+    const token = localStorage.getItem('fitx_token');
+    if (token) {
       navigate('/workouts');
     } else {
       navigate('/login');
@@ -20,7 +22,7 @@ const Home: React.FC = () => {
       <div className="relative bg-slate-900 h-[600px] flex items-center overflow-hidden">
         <div className="absolute inset-0 z-0 opacity-40">
           <img 
-            src="https://picsum.photos/1920/1080?random=gym" 
+            src="https://media.gq.com.mx/photos/6172af480274cf754fc26a3e/16:9/w_2560%2Cc_limit/GettyImages-1287874600.jpg" 
             alt="Gym Background" 
             className="w-full h-full object-cover"
           />

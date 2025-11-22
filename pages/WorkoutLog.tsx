@@ -2,6 +2,8 @@ import React, { useState, useEffect } from 'react';
 import { WorkoutLogEntry, WorkoutSet } from '../types';
 import { Calendar, Plus, Save, Trash2, ClipboardList, Dumbbell, X } from 'lucide-react';
 
+const API_BASE: string = ((import.meta as any).env?.VITE_API_URL) || 'http://localhost:4000';
+
 const WorkoutLog: React.FC = () => {
   const [logs, setLogs] = useState<WorkoutLogEntry[]>([]);
   const [isAdding, setIsAdding] = useState(false);
@@ -18,19 +20,33 @@ const WorkoutLog: React.FC = () => {
   const [weightInput, setWeightInput] = useState('');
 
   useEffect(() => {
-    const savedLogs = localStorage.getItem('fitx_workout_logs');
-    if (savedLogs) {
-      try {
-        setLogs(JSON.parse(savedLogs));
-      } catch (e) {
-        console.error("Failed to parse workout logs");
+    const token = localStorage.getItem('fitx_token');
+    if (token) {
+      // fetch from backend
+      fetch(`${API_BASE}/api/logs`, { headers: { Authorization: `Bearer ${token}` } })
+        .then((res) => res.json())
+        .then((data) => setLogs(Array.isArray(data) ? data : []))
+        .catch((err) => {
+          console.error('Failed to load logs from server', err);
+        });
+    } else {
+      const savedLogs = localStorage.getItem('fitx_workout_logs');
+      if (savedLogs) {
+        try {
+          setLogs(JSON.parse(savedLogs));
+        } catch (e) {
+          console.error('Failed to parse workout logs');
+        }
       }
     }
   }, []);
 
   const saveToStorage = (newLogs: WorkoutLogEntry[]) => {
     setLogs(newLogs);
-    localStorage.setItem('fitx_workout_logs', JSON.stringify(newLogs));
+    const token = localStorage.getItem('fitx_token');
+    if (!token) {
+      localStorage.setItem('fitx_workout_logs', JSON.stringify(newLogs));
+    }
   };
 
   const addSet = () => {
@@ -60,17 +76,32 @@ const WorkoutLog: React.FC = () => {
       alert("Please fill in the date, workout name, and add at least one exercise.");
       return;
     }
+    const token = localStorage.getItem('fitx_token');
+    const payload = { date, name: workoutName, exercises: currentSets };
+    if (token) {
+      fetch(`${API_BASE}/api/logs`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', Authorization: `Bearer ${token}` },
+        body: JSON.stringify(payload)
+      })
+        .then(async (res) => {
+          const data = await res.json();
+          if (!res.ok) throw new Error(data?.message || 'Failed to save');
+          // prepend saved log
+          saveToStorage([data, ...logs]);
+        })
+        .catch((err) => {
+          console.error('Save workout failed', err);
+          alert('Unable to save to server. Falling back to local storage.');
+          const newLog: WorkoutLogEntry = { id: Date.now().toString(), date, name: workoutName, exercises: currentSets };
+          saveToStorage([newLog, ...logs]);
+        });
+    } else {
+      const newLog: WorkoutLogEntry = { id: Date.now().toString(), date, name: workoutName, exercises: currentSets };
+      const updatedLogs = [newLog, ...logs]; // Newest first
+      saveToStorage(updatedLogs);
+    }
 
-    const newLog: WorkoutLogEntry = {
-      id: Date.now().toString(),
-      date,
-      name: workoutName,
-      exercises: currentSets
-    };
-
-    const updatedLogs = [newLog, ...logs]; // Newest first
-    saveToStorage(updatedLogs);
-    
     // Reset Form
     setIsAdding(false);
     setWorkoutName('');
@@ -79,7 +110,20 @@ const WorkoutLog: React.FC = () => {
   };
 
   const deleteLog = (id: string) => {
-    if (confirm("Are you sure you want to delete this workout log?")) {
+    if (!confirm('Are you sure you want to delete this workout log?')) return;
+    const token = localStorage.getItem('fitx_token');
+    if (token) {
+      fetch(`${API_BASE}/api/logs/${id}`, { method: 'DELETE', headers: { Authorization: `Bearer ${token}` } })
+        .then(async (res) => {
+          const data = await res.json().catch(() => ({}));
+          if (!res.ok) throw new Error(data?.message || 'Delete failed');
+          saveToStorage(logs.filter(log => String(log._id || log.id) !== String(id)));
+        })
+        .catch((err) => {
+          console.error('Delete failed', err);
+          alert('Unable to delete on server');
+        });
+    } else {
       saveToStorage(logs.filter(log => log.id !== id));
     }
   };

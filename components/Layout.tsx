@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { Dumbbell, Menu, X, LogOut } from 'lucide-react';
+const API_BASE: string = ((import.meta as any).env?.VITE_API_URL) || 'http://localhost:4000';
 
 const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   const [isMenuOpen, setIsMenuOpen] = React.useState(false);
@@ -11,12 +12,15 @@ const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   // Scroll to top whenever location changes and check login status
   React.useEffect(() => {
     window.scrollTo(0, 0);
-    setIsLoggedIn(localStorage.getItem('isLoggedIn') === 'true');
+    // Prefer server-validated token if available
+    const token = localStorage.getItem('fitx_token');
+    setIsLoggedIn(!!token);
   }, [location.pathname]);
 
   const handleLogout = () => {
-    localStorage.removeItem('isLoggedIn');
-    localStorage.removeItem('userEmail');
+    // clear auth tokens
+    localStorage.removeItem('fitx_token');
+    localStorage.removeItem('fitx_user');
     setIsLoggedIn(false);
     navigate('/');
   };
@@ -40,7 +44,7 @@ const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
             {/* Logo */}
             <Link to="/" className="flex items-center gap-3 group">
               <div className="bg-gradient-to-br from-blue-600 to-indigo-600 p-2.5 rounded-xl shadow-lg shadow-blue-500/20 group-hover:shadow-blue-500/30 group-hover:scale-105 transition-all duration-300">
-                <Dumbbell className="w-6 h-6 text-white" />
+                <Dumbbell className="w-8 h-8 text-white" />
               </div>
               <div className="flex flex-col">
                 <span className="text-xl font-bold tracking-tight text-slate-900 leading-none">Fit-X</span>

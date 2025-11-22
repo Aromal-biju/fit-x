@@ -50,7 +50,7 @@ export const WORKOUTS: Exercise[] = [
     ],
     sets: '3',
     reps: '12-15',
-    imageUrl: 'https://picsum.photos/600/400?random=2'
+    imageUrl: 'https://hortonbarbell.com/wp-content/uploads/2022/11/Dumbbell-Incline-Bench-Press-Alternatives.png'
   },
   {
     id: 'gym_c3',
@@ -66,7 +66,7 @@ export const WORKOUTS: Exercise[] = [
     ],
     sets: '3',
     reps: '12-15',
-    imageUrl: 'https://picsum.photos/600/400?random=17'
+    imageUrl: 'https://cdn.shopify.com/s/files/1/0618/9462/3460/files/stock-photo-beautiful-young-caucasian-female-athlete-exercising-with-cable-crossover-machine-in-fitness-gym-1846648126-800x571.jpg'
   },
   {
     id: 'gym_b1',
@@ -82,7 +82,7 @@ export const WORKOUTS: Exercise[] = [
     ],
     sets: '3',
     reps: '5-8',
-    imageUrl: 'https://picsum.photos/600/400?random=3'
+    imageUrl: 'https://it.nutrimuscle.com/cdn/shop/articles/Blog_article-Sumo_deadlift-1000x635_d22cea08-30b7-4383-a875-9d6b25e72142.jpg?v=1753085959'
   },
   {
     id: 'gym_b2',
@@ -98,7 +98,7 @@ export const WORKOUTS: Exercise[] = [
     ],
     sets: '3',
     reps: 'Failure',
-    imageUrl: 'https://picsum.photos/600/400?random=4'
+    imageUrl: 'https://images.ctfassets.net/0k812o62ndtw/5NuCplQIQtWN7cQMgoEtXf/0ab832bf7faf755ef47fc9e413300db3/2023.11.17_SWEAT_LAURA05320-1024x683-27c3a53.jpg'
   },
   {
     id: 'gym_b3',
@@ -114,7 +114,7 @@ export const WORKOUTS: Exercise[] = [
     ],
     sets: '3-4',
     reps: '10-12',
-    imageUrl: 'https://picsum.photos/600/400?random=18'
+    imageUrl: 'https://images.squarespace-cdn.com/content/v1/5750d5129f72662d66448028/1484548314797-17MUSPPZNGTMUTEDF8ES/Lat+Pulldown+%28Bodybuilder%29.jpg?format=500w'
   },
   {
     id: 'gym_b4',
@@ -130,7 +130,7 @@ export const WORKOUTS: Exercise[] = [
     ],
     sets: '3',
     reps: '10-12',
-    imageUrl: 'https://picsum.photos/600/400?random=19'
+    imageUrl: 'https://sportpower.ir/wp-content/uploads/2023/06/2-min-12.jpg'
   },
   {
     id: 'gym_s1',
@@ -146,7 +146,7 @@ export const WORKOUTS: Exercise[] = [
     ],
     sets: '4',
     reps: '8-10',
-    imageUrl: 'https://picsum.photos/600/400?random=5'
+    imageUrl: 'https://images.squarespace-cdn.com/content/v1/5750d5129f72662d66448028/1516601347742-NU3F90DT62A0KBWTRQAH/Shoulder+Press.jpg?format=1500w'
   },
   {
     id: 'gym_s2',
@@ -162,7 +162,7 @@ export const WORKOUTS: Exercise[] = [
     ],
     sets: '3-4',
     reps: '12-15',
-    imageUrl: 'https://picsum.photos/600/400?random=20'
+    imageUrl: 'https://hips.hearstapps.com/hmg-prod/images/fai-6871-jpg-1646751792.jpg?crop=1xw:0.84375xh;0,0.149xh'
   },
   {
     id: 'gym_s3',
@@ -178,7 +178,7 @@ export const WORKOUTS: Exercise[] = [
     ],
     sets: '3',
     reps: '15-20',
-    imageUrl: 'https://picsum.photos/600/400?random=21'
+    imageUrl: 'https://hips.hearstapps.com/hmg-prod/images/man-training-royalty-free-image-1751985265.pjpeg?crop=0.88889xw:1xh;center,top&resize=1200:*'
   },
   {
     id: 'gym_a1',
@@ -194,7 +194,7 @@ export const WORKOUTS: Exercise[] = [
     ],
     sets: '3',
     reps: '10-12',
-    imageUrl: 'https://picsum.photos/600/400?random=6'
+    imageUrl: 'https://barbend.com/wp-content/uploads/2024/01/barbell-curl-336330392.jpg'
   },
   {
     id: 'gym_a2',
@@ -210,7 +210,7 @@ export const WORKOUTS: Exercise[] = [
     ],
     sets: '3',
     reps: '12-15',
-    imageUrl: 'https://picsum.photos/600/400?random=22'
+    imageUrl: 'https://imagely.mirafit.co.uk/wp/wp-content/uploads/2022/11/tricep-pushdown-with-Mirafit-Cable-Machine.jpg'
   },
   {
     id: 'gym_a3',
@@ -226,7 +226,7 @@ export const WORKOUTS: Exercise[] = [
     ],
     sets: '3',
     reps: '10-12',
-    imageUrl: 'https://picsum.photos/600/400?random=23'
+    imageUrl: 'https://www.trainheroic.com/wp-content/uploads/2023/02/AdobeStock_417412809-TH-jpg.webp'
   },
   {
     id: 'gym_l1',
@@ -242,7 +242,7 @@ export const WORKOUTS: Exercise[] = [
     ],
     sets: '4',
     reps: '6-10',
-    imageUrl: 'https://picsum.photos/600/400?random=7'
+    imageUrl: 'https://cdn.muscleandstrength.com/sites/default/files/barbell-back-squat.jpg'
   },
   {
     id: 'gym_l2',
@@ -257,7 +257,7 @@ export const WORKOUTS: Exercise[] = [
     ],
     sets: '3',
     reps: '10-15',
-    imageUrl: 'https://picsum.photos/600/400?random=15'
+    imageUrl: 'https://cdn.muscleandstrength.com/sites/default/files/leg-press.jpg'
   },
   {
     id: 'gym_l3',
@@ -273,7 +273,7 @@ export const WORKOUTS: Exercise[] = [
     ],
     sets: '3',
     reps: '12-15',
-    imageUrl: 'https://picsum.photos/600/400?random=24'
+    imageUrl: 'https://intowellness.in/wp-content/uploads/2024/12/Leg-Extension-Machine.jpg'
   },
   {
     id: 'gym_l4',
@@ -289,7 +289,7 @@ export const WORKOUTS: Exercise[] = [
     ],
     sets: '3',
     reps: '12-15',
-    imageUrl: 'https://picsum.photos/600/400?random=25'
+    imageUrl: 'https://intowellness.in/wp-content/uploads/2024/10/Seated_Leg_Curl-2.jpg'
   },
   {
     id: 'gym_l5',
@@ -305,7 +305,7 @@ export const WORKOUTS: Exercise[] = [
     ],
     sets: '3-4',
     reps: '8-12',
-    imageUrl: 'https://picsum.photos/600/400?random=26'
+    imageUrl: 'https://images.ctfassets.net/8urtyqugdt2l/7BbRGqwGuCSrkkVXbSELg5/e74283e5d48437abbbcc5bf6a1f010a7/desktop-romanian-deadlift.jpg'
   },
   {
     id: 'gym_ab_gym1',
@@ -321,7 +321,7 @@ export const WORKOUTS: Exercise[] = [
     ],
     sets: '3',
     reps: '10-15',
-    imageUrl: 'https://picsum.photos/600/400?random=27'
+    imageUrl: 'https://athleanx.com/wp-content/uploads/2018/10/abdominals.png'
   },
 
   // --- HOME WORKOUTS ---

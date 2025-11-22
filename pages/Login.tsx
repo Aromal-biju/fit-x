@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Dumbbell, Mail, Lock, ArrowRight, AlertCircle } from 'lucide-react';
 
+const API_BASE = import.meta.env.VITE_API_URL || 'http://localhost:4000';
+
 const Login: React.FC = () => {
   const [isLogin, setIsLogin] = useState(true);
   const [email, setEmail] = useState('');
@@ -13,50 +15,44 @@ const Login: React.FC = () => {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     setError('');
-
     // Basic validation
     if (!email || !password) {
       setError('Please fill in all fields');
       return;
     }
 
-    // Get existing users from local storage
-    const existingUsersStr = localStorage.getItem('fitx_users');
-    const users = existingUsersStr ? JSON.parse(existingUsersStr) : [];
+    const endpoint = isLogin ? '/api/auth/login' : '/api/auth/signup';
 
-    if (isLogin) {
-      // Login Logic
-      const user = users.find((u: any) => u.email === email && u.password === password);
-      
-      if (user) {
-        localStorage.setItem('isLoggedIn', 'true');
-        localStorage.setItem('userEmail', email);
-        navigate('/');
-      } else {
-        setError('Invalid email or password');
-      }
-    } else {
-      // Signup Logic
-      if (password !== confirmPassword) {
-        setError('Passwords do not match');
-        return;
-      }
-
-      if (users.find((u: any) => u.email === email)) {
-        setError('An account with this email already exists');
-        return;
-      }
-
-      // Create new user
-      const newUser = { email, password };
-      users.push(newUser);
-      localStorage.setItem('fitx_users', JSON.stringify(users));
-      
-      // Auto login after signup
-      localStorage.setItem('isLoggedIn', 'true');
-      localStorage.setItem('userEmail', email);
-      navigate('/');
+    const payload: any = isLogin ? { email, password } : { name: '', email, password };
+    if (!isLogin) payload.name = '';
+    if (!isLogin && password !== confirmPassword) {
+      setError('Passwords do not match');
+      return;
     }
+
+    fetch(`${API_BASE}${endpoint}`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(payload)
+    })
+      .then(async (res) => {
+        const data = await res.json();
+        if (!res.ok) {
+          throw new Error(data?.message || 'Authentication failed');
+        }
+        // store token and user
+        if (data.token) {
+          localStorage.setItem('fitx_token', data.token);
+        }
+        if (data.user) {
+          localStorage.setItem('fitx_user', JSON.stringify(data.user));
+        }
+        navigate('/');
+      })
+      .catch((err: any) => {
+        console.error(err);
+        setError(err.message || 'Server error');
+      });
   };
 
   const toggleMode = () => {
